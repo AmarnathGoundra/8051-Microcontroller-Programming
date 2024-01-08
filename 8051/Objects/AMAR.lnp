@@ -1,0 +1,3 @@
+".\Objects\KEYBOARD.obj" 
+TO ".\Objects\AMAR" 
+PRINT(".\Listings\AMAR.m51")

@@ -1,0 +1,36 @@
+A51 MACRO ASSEMBLER  SAWTOOTH0                                                            01/02/2022 14:55:39 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\SAWTOOTH0.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SAWTOOTH0.A51 SET(SMALL) DEBUG PRINT(.\Listings\SAWTOOTH0.lst) OBJECT(.
+                      \Objects\SAWTOOTH0.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 E4                1     UP : CLR A
+0001 04                2     CONTINUE: INC A
+0002 F580              3     MOV P0, A
+0004 B4FFFA            4     CJNE A, #0FFH, CONTINUE
+0007 14                5     DEC A
+0008 7400              6     MOV A, #00H
+000A F580              7     MOV P0, A
+000C 80F2              8     JMP UP
+                       9     END
+A51 MACRO ASSEMBLER  SAWTOOTH0                                                            01/02/2022 14:55:39 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CONTINUE . . . . .  C ADDR   0001H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+UP . . . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

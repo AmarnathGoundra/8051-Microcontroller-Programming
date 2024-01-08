@@ -1,0 +1,45 @@
+A51 MACRO ASSEMBLER  SERIAL2                                                              01/02/2022 15:41:15 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\SERIAL2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SERIAL2.A51 SET(SMALL) DEBUG PRINT(.\Listings\SERIAL2.lst) OBJECT(.\Obj
+                      ects\SERIAL2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 758920            1     MOV TMOD, #20H
+0003 758DFD            2     MOV TH1, #0FDH
+0006 759850            3     MOV SCON, #50H
+0009 C299              4     UP: CLR TI
+000B D28E              5             SETB TR1
+000D 3098FD            6     HERE: JNB RI, HERE
+0010 E599              7               MOV A, SBUF
+0012 F590              8               MOV P1, A
+0014 C298              9               CLR RI
+0016 80F1             10               SJMP UP
+                      11     END
+A51 MACRO ASSEMBLER  SERIAL2                                                              01/02/2022 15:41:15 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   000DH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+UP . . . . . . . .  C ADDR   0009H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

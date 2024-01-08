@@ -1,0 +1,83 @@
+A51 MACRO ASSEMBLER  LCD                                                                  01/14/2022 22:46:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LCD.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE LCD.A51 SET(SMALL) DEBUG PRINT(.\Listings\LCD.lst) OBJECT(.\Objects\LCD
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 900050            2     MOV DPTR, #0050H
+0003 7438              3     MOV A, #38H
+0005 1134              4     ACALL COMNWRT
+0007 1141              5     ACALL DELAY
+0009 740E              6     MOV A, #0EH
+000B 1134              7     ACALL COMNWRT
+000D 1141              8     ACALL DELAY
+000F 7401              9     MOV A, #01H
+0011 1134             10     ACALL COMNWRT
+0013 1141             11     ACALL DELAY
+0015 75E000           12     MOV ACC, #00H
+0018 F5F0             13     NEXT: MOV B, A
+001A 93               14               MOVC A, @A+DPTR
+001B 1127             15               ACALL DATAWRT
+001D 1141             16               ACALL DELAY
+001F E5F0             17               MOV A, B
+0021 04               18               INC A
+0022 B410F3           19               CJNE A, #10H, NEXT
+0025 80FE             20     LAST: SJMP LAST
+0027 F590             21     DATAWRT: MOV P1, A
+0029 D284             22                  SETB P0.4
+002B C285             23                      CLR P0.5
+002D D286             24                      SETB P0.6
+002F 1141             25                      ACALL DELAY
+0031 C286             26                      CLR P0.6
+0033 22               27                      RET
+0034 F590             28     COMNWRT: MOV P1, A
+0036 C284             29                      CLR P0.4
+0038 C285             30                      CLR P0.5
+003A D286             31                      SETB P0.6
+003C 1141             32                      ACALL DELAY
+003E C286             33                      CLR P0.6
+0040 22               34                      RET
+0041 7C00             35     DELAY: MOV R4, #00H
+0043 7B00             36     HERE1: MOV R3, #00H
+0045 7A00             37     HERE2: MOV R2, #00H
+0047 DAFE             38     HERE3: DJNZ R2, HERE3
+0049 DBFA             39               DJNZ R3, HERE2
+004B DCF6             40               DJNZ R4, HERE1
+004D 22               41               RET
+0050                  42     ORG 0050H
+0050 48454C4C         43     MYDATA: DB 'H', 'E', 'L', 'L', 'O', ' ', 'A', 'M', 'A', 'R'
+0054 4F20414D                
+0058 4152                    
+                      44     END
+A51 MACRO ASSEMBLER  LCD                                                                  01/14/2022 22:46:16 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+COMNWRT. . . . . .  C ADDR   0034H   A   
+DATAWRT. . . . . .  C ADDR   0027H   A   
+DELAY. . . . . . .  C ADDR   0041H   A   
+HERE1. . . . . . .  C ADDR   0043H   A   
+HERE2. . . . . . .  C ADDR   0045H   A   
+HERE3. . . . . . .  C ADDR   0047H   A   
+LAST . . . . . . .  C ADDR   0025H   A   
+MYDATA . . . . . .  C ADDR   0050H   A   
+NEXT . . . . . . .  C ADDR   0018H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

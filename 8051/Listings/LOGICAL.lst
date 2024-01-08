@@ -1,0 +1,39 @@
+A51 MACRO ASSEMBLER  LOGICAL                                                              01/01/2022 22:15:54 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LOGICAL.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE LOGICAL.A51 SET(SMALL) DEBUG PRINT(.\Listings\LOGICAL.lst) OBJECT(.\Obj
+                      ects\LOGICAL.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 901000            1     MOV DPTR, #1000H
+0003 E0                2     MOVX A, @DPTR
+0004 F8                3     MOV R0, A
+0005 A3                4     INC DPTR
+0006 E0                5     MOVX A, @DPTR
+0007 58                6     ANL A, R0
+0008 A3                7     INC DPTR
+0009 F0                8     MOVX @DPTR, A
+000A 68                9     XRL A, R0
+000B A3               10     INC DPTR
+000C F0               11     MOVX @DPTR, A
+000D 48               12     ORL A, R0
+000E A3               13     INC DPTR
+000F F0               14     MOVX @DPTR, A
+                      15     END
+A51 MACRO ASSEMBLER  LOGICAL                                                              01/01/2022 22:15:54 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

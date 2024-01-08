@@ -1,0 +1,106 @@
+A51 MACRO ASSEMBLER  KEYBOARD                                                             01/14/2022 23:11:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\KEYBOARD.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE KEYBOARD.A51 SET(SMALL) DEBUG PRINT(.\Listings\KEYBOARD.lst) OBJECT(.\O
+                      bjects\KEYBOARD.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 75A0FF            1     MOV P2, #0FFH
+0003 759000            2     K1: MOV P1, #0H
+0006 E5A0              3             MOV A, P2
+0008 540F              4             ANL A, #0FH
+000A B40FF6            5             CJNE A, #0FH, K1
+000D 116B              6     K2: ACALL DELAY
+000F E5A0              7             MOV A, P2
+0011 540F              8             ANL A, #0FH
+0013 B40F00            9             CJNE A, #0FH, OVER
+0016 116B             10     OVER: ACALL DELAY
+0018 E5A0             11             MOV A, P2
+001A 540F             12             ANL A, #0FH
+001C B40F00           13             CJNE A, #0FH, OVER1
+001F 7590FE           14     OVER1:  MOV P1, #0FEH
+0022 E5A0             15                     MOV A, P2
+0024 540F             16                     ANL A, #0FH
+0026 B40F21           17                     CJNE A, #0FH, ROW_0
+0029 7590FD           18                     MOV P1, #0FDH
+002C E5A0             19                     MOV A, P2
+002E 540F             20                     ANL A, #0FH
+0030 B40F1C           21                     CJNE A, #0FH, ROW_1
+0033 7590FB           22                     MOV P1, #0FBH
+0036 E5A0             23                     MOV A, P2
+0038 540F             24                     ANL A, #0FH
+003A B40F17           25                     CJNE A, #0FH, ROW_2
+003D 7590F7           26                     MOV P1, #0F7H
+0040 E5A0             27                     MOV A, P2
+0042 540F             28                     ANL A, #0FH
+0044 B40F12           29                     CJNE A, #0FH, ROW_3
+0047 02000D           30                     LJMP K2
+004A 900300           31     ROW_0: MOV DPTR, #KCODE1
+004D 800F             32                     SJMP FIND
+004F 900304           33     ROW_1: MOV DPTR, #KCODE2
+0052 800A             34                     SJMP FIND
+0054 900308           35     ROW_2: MOV DPTR, #KCODE3
+0057 8005             36                     SJMP FIND
+0059 90030C           37     ROW_3: MOV DPTR, #KCODE4
+005C 8000             38                     SJMP FIND
+005E 13               39     FIND: RRC A
+005F 5003             40             JNC MATCH
+0061 A3               41             INC DPTR
+0062 80FA             42             SJMP FIND
+0064 E4               43     MATCH: CLR A
+0065 93               44             MOVC A, @A+DPTR
+0066 F580             45             MOV P0, A
+0068 020003           46             LJMP K1
+006B 7C00             47     DELAY: MOV R4, #00H
+006D 7B00             48     HERE1: MOV R3, #00H
+006F 7A00             49     HERE2: MOV R2, #00H
+0071 DAFE             50     HERE3: DJNZ R2, HERE3
+0073 DBFA             51               DJNZ R3, HERE2
+0075 DCF6             52               DJNZ R4, HERE1
+0077 22               53               RET
+0300                  54     ORG 300H
+0300 30313233         55     KCODE1: DB '0', '1', '2', '3'
+0304 34353637         56     KCODE2: DB '4', '5', '6', '7'
+0308 38394142         57     KCODE3: DB '8', '9', 'A', 'B'
+A51 MACRO ASSEMBLER  KEYBOARD                                                             01/14/2022 23:11:07 PAGE     2
+
+030C 43444546         58     KCODE4: DB 'C', 'D', 'E', 'F'
+                      59     END
+A51 MACRO ASSEMBLER  KEYBOARD                                                             01/14/2022 23:11:07 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   006BH   A   
+FIND . . . . . . .  C ADDR   005EH   A   
+HERE1. . . . . . .  C ADDR   006DH   A   
+HERE2. . . . . . .  C ADDR   006FH   A   
+HERE3. . . . . . .  C ADDR   0071H   A   
+K1 . . . . . . . .  C ADDR   0003H   A   
+K2 . . . . . . . .  C ADDR   000DH   A   
+KCODE1 . . . . . .  C ADDR   0300H   A   
+KCODE2 . . . . . .  C ADDR   0304H   A   
+KCODE3 . . . . . .  C ADDR   0308H   A   
+KCODE4 . . . . . .  C ADDR   030CH   A   
+MATCH. . . . . . .  C ADDR   0064H   A   
+OVER . . . . . . .  C ADDR   0016H   A   
+OVER1. . . . . . .  C ADDR   001FH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+ROW_0. . . . . . .  C ADDR   004AH   A   
+ROW_1. . . . . . .  C ADDR   004FH   A   
+ROW_2. . . . . . .  C ADDR   0054H   A   
+ROW_3. . . . . . .  C ADDR   0059H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,59 @@
+A51 MACRO ASSEMBLER  7SEGMENT                                                             01/14/2022 22:32:35 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\7SEGMENT.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 7SEGMENT.A51 SET(SMALL) DEBUG PRINT(.\Listings\7SEGMENT.lst) OBJECT(.\O
+                      bjects\7SEGMENT.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 900050            2     MOV DPTR, #0050H
+0003 74F7              3     MOV A, #0F7H
+0005 F580              4     MOV P0, A
+0007 75E000            5     AGAIN: MOV ACC, #00H
+000A F5F0              6     NEXT: MOV B, A
+000C 93                7               MOVC A, @A+DPTR
+000D F590              8               MOV P1, A
+000F 1119              9               ACALL DELAY
+0011 E5F0             10               MOV A, B
+0013 04               11               INC A
+0014 B40AF3           12               CJNE A, #0AH, NEXT
+0017 80EE             13               SJMP AGAIN
+0019 7C00             14     DELAY: MOV R4, #00H
+001B 7B00             15     HERE1: MOV R3, #00H
+001D 7A00             16     HERE2: MOV R2, #00H
+001F DAFE             17     HERE3: DJNZ R2, HERE3
+0021 DBFA             18               DJNZ R3, HERE2
+0023 DCF6             19               DJNZ R4, HERE1
+0025 22               20               RET
+0050                  21               ORG 50H
+0050 3F065B4F         22               DB 3FH, 06H, 5BH, 4FH, 66H, 6DH, 70H, 07H, 7FH, 6FH
+0054 666D7007                
+0058 7F6F                    
+                      23     END
+A51 MACRO ASSEMBLER  7SEGMENT                                                             01/14/2022 22:32:35 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+AGAIN. . . . . . .  C ADDR   0007H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY. . . . . . .  C ADDR   0019H   A   
+HERE1. . . . . . .  C ADDR   001BH   A   
+HERE2. . . . . . .  C ADDR   001DH   A   
+HERE3. . . . . . .  C ADDR   001FH   A   
+NEXT . . . . . . .  C ADDR   000AH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,67 @@
+A51 MACRO ASSEMBLER  SERIAL3                                                              01/02/2022 15:53:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\SERIAL3.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SERIAL3.A51 SET(SMALL) DEBUG PRINT(.\Listings\SERIAL3.lst) OBJECT(.\Obj
+                      ects\SERIAL3.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 758920            1     MOV TMOD, #20H
+0003 758DFD            2     MOV TH1, #0FDH
+0006 759850            3     MOV SCON, #50H
+0009 D28E              4     SETB TR1
+000B 900031            5     MOV DPTR, #MYDATA
+000E E4                6     H_1: CLR A
+000F 93                7              MOVC A, @A+DPTR
+0010 6005              8              JZ B_1
+0012 1121              9              ACALL SEND
+0014 A3               10              INC DPTR
+0015 80F7             11              SJMP H_1
+0017 E5A0             12     B_1: MOV A, P2
+0019 1121             13              ACALL SEND
+001B 1129             14              ACALL RECV
+001D F590             15              MOV P1, A
+001F 80F6             16              SJMP B_1
+0021 F599             17              SEND: MOV SBUF, A
+0023 3099FD           18     H_2: JNB TI, H_2
+0026 C299             19              CLR TI
+0028 22               20              RET
+0029 3098FD           21     RECV: JNB RI, RECV
+002C E599             22              MOV A, SBUF
+002E C298             23              CLR RI
+0030 22               24              RET
+0031 48454C4C         25     MYDATA: DB "HELLO WORLD"         
+0035 4F20574F                
+0039 524C44                  
+                      26     END
+A51 MACRO ASSEMBLER  SERIAL3                                                              01/02/2022 15:53:02 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B_1. . . . . . . .  C ADDR   0017H   A   
+H_1. . . . . . . .  C ADDR   000EH   A   
+H_2. . . . . . . .  C ADDR   0023H   A   
+MYDATA . . . . . .  C ADDR   0031H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RECV . . . . . . .  C ADDR   0029H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SEND . . . . . . .  C ADDR   0021H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

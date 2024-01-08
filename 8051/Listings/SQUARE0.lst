@@ -1,0 +1,48 @@
+A51 MACRO ASSEMBLER  SQUARE0                                                              01/02/2022 13:56:53 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\SQUARE0.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE SQUARE0.A51 SET(SMALL) DEBUG PRINT(.\Listings\SQUARE0.lst) OBJECT(.\Obj
+                      ects\SQUARE0.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 758901            1     MOV TMOD, #01H
+0003 E4                2     UP: CLR A
+0004 F580              3     MOV P0, A
+0006 1110              4     ACALL DELAY
+0008 74FF              5     MOV A, #0FFH
+000A F580              6     MOV P0, A
+000C 1110              7     ACALL DELAY
+000E 80F3              8     SJMP UP
+0010 758A05            9     DELAY: MOV TL0, #05H
+0013 758C00           10     MOV TH0, #00H
+0016 D28C             11     SETB TR0
+0018 308DFD           12     HERE: JNB TF0, HERE
+001B C28D             13     CLR TF0
+001D 22               14     RET
+                      15     END
+A51 MACRO ASSEMBLER  SQUARE0                                                              01/02/2022 13:56:53 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0010H   A   
+HERE . . . . . . .  C ADDR   0018H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+UP . . . . . . . .  C ADDR   0003H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
